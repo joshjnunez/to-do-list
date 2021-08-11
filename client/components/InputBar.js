@@ -1,9 +1,15 @@
 import React, {useState, useEffect} from "react";
 
 const InputBar = ({handleClick}) => {
+// using hooks to set state 
+const [listItem, setListItem] = useState('');
 
-// Need to handleChange within Input and then pass event to handleClick 
-// setState in app.js for new array
+
+// need to figure out a way to pass new list item into array on ItemsList.js
+
+const consoleLogValue = () => {
+    console.log(listItem);
+}
 
 return(
 <div>
@@ -12,8 +18,10 @@ return(
     id="inputItem"
     placeholder="Add to your to-do list"
     name="list"
+    onChange={e => setListItem(e.target.value)}
     />
-<button type="submit" onClick = {(e) => handleClick(e.target.value)}>Add</button>
+<button type="submit" onClick = {e => consoleLogValue(e.target.value)}>Add</button>
+
 
 </div>
   

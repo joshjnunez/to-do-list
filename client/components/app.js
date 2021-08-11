@@ -14,8 +14,8 @@ class App extends Component {
 }
 
 
-handleClick (e) {
-let newItemArray = this.state.itemsArray.concat(e.target.value)
+handleClick (listItem) {
+let newItemArray = this.state.itemsArray.concat(listItem)
 this.setState({itemsArray: newItemArray})
 }
 
