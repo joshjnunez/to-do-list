@@ -6,32 +6,43 @@ class App extends Component {
     super(props);
 
     this.state = {
-        firstItem: "Go for a walk",
-        itemsArray: ["Go for a walk", "Clean room", "Make dinner"],
+        newItem: '',
+        itemsArray: [],
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleChange= this.handleChange.bind(this);
 }
 
+handleChange (item) {
+this.setState({ newItem: item})
+}
 
-handleClick (listItem) {
-let newItemArray = this.state.itemsArray.concat(listItem)
+handleClick (newItem) {
+    newItem = this.state.newItem;
+    console.lo
+let newItemArray = this.state.itemsArray.concat(newItem)
 this.setState({itemsArray: newItemArray})
 }
 
 render(){
-    // const { firstItem, itemsArray } = this.state;
+    const { itemsArray } = this.state;
     return(
-
         <div>
             <h1>TO DO LIST APP</h1>
-            <InputBar handleClick={this.handleClick.bind(this)}/>
-            <div>
-                {/* {firstItem} */}
-            </div>
-            <div>
-            {/* {itemsArray[0]}, {itemsArray[1]}, {itemsArray[2]} */}
-            </div>
+            <input
+                type="text"
+                id="inputItem"
+                placeholder="Add to your to-do list"
+                name="list"
+                onChange={e => this.handleChange(e.target.value)}
+            />
+            <button type="submit" onClick = {(item) => this.handleClick(item)}>Add</button>
+            <ul>
+                {itemsArray.map((item)=>(
+                    <li key={item}>{item}</li>
+                ))}
+            </ul>
         </div>
       
 
